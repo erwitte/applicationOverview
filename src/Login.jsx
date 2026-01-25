@@ -1,7 +1,9 @@
 function Login(){
     return (
         <>
-        <p>hallo</p>
+            <div className="min-h-screen w-full bg-slate-950">
+                <p>dings</p>
+            </div>
         </>
     )
 }
