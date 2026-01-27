@@ -1,7 +1,8 @@
-const ActionButton = ({ children }) => {
+const ActionButton = ({ children, onClick }) => {
     return (
         <button 
             type={ 'button'}
+            onClick={onClick}
             className="border border-black-200 cursor-pointer rounded p-2 bg-slate-400 hover:bg-slate-500 transition-colors"
         >
             {children}
