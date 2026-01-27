@@ -1,10 +1,6 @@
-function Login(){
-     const ActionButton = ({ children }) => (
-  <button className="border border-black-200 cursor-pointer rounded p-2 bg-slate-400 hover:bg-slate-500 transition-colors">
-    {children}
-  </button>
-);
+import ActionButton from './components/ActionButton'
 
+function Login(){
     return (
         <>
             <div className="w-full max-w-md bg-slate-200 border border-slate-800 p-8 rounded-2xl shadow-2xl flex items-center justify-center flex-col">
