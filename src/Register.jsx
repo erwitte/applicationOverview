@@ -4,8 +4,14 @@ import { useState } from "react";
 function Register(){
     const [password, setPassword] = useState("");
     const [confirmedPassword, setConfirmedPasswort] = useState("");
+    const [passwordError, setPasswordError] = useState("");
 
     const register = () => {
+        if (password !== confirmedPassword){
+            setPasswordError("passwords dont match");
+            return;
+        }
+        setPasswordError(null);
         console.log(password === confirmedPassword);
     }
 
@@ -23,6 +29,10 @@ function Register(){
                                                 type="password"
                                                 value={confirmedPassword}
                                                 onChange={(e) => setConfirmedPasswort(e.target.value)}></input>
+
+                {passwordError && (
+        <p className="text-red-600 text-sm">{passwordError}</p>
+      )}
                 <div className="flex gap-4 p-4">
                     <ActionButton onClick={() => {register()}}>Register</ActionButton>
                 </div>
