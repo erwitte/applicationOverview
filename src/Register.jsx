@@ -1,44 +1,60 @@
-import ActionButton from "./components/ActionButton"
 import { useState } from "react";
+import ActionButton from "./components/ActionButton";
 
-function Register(){
-    const [password, setPassword] = useState("");
-    const [confirmedPassword, setConfirmedPasswort] = useState("");
-    const [passwordError, setPasswordError] = useState("");
+function Register() {
+  const [password, setPassword] = useState("");
+  const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-    const register = () => {
-        if (password !== confirmedPassword){
-            setPasswordError("passwords dont match");
-            return;
-        }
-        setPasswordError(null);
-        console.log(password === confirmedPassword);
+  const register = () => {
+    if (password !== confirmedPassword) {
+      setPasswordError("Passwords don't match");
+      return;
     }
 
-    return (
-        <>
-            <div className="w-full max-w-md bg-slate-200 border border-slate-800 p-8 rounded-2xl shadow-2xl flex items-center justify-center flex-col">
-                <span>Username: </span> <input className="border border-black-200 rounded" type="text" placeholder="username..."></input>
-                <span>Password: </span> <input 
-                                        className="border border-black-200 rounded" 
-                                        type="password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}></input>
-                <span>repeat Password: </span> <input 
-                                                className="border border-black-200 rounded" 
-                                                type="password"
-                                                value={confirmedPassword}
-                                                onChange={(e) => setConfirmedPasswort(e.target.value)}></input>
+    setPasswordError("");
+  };
 
-                {passwordError && (
-        <p className="text-red-600 text-sm">{passwordError}</p>
-      )}
-                <div className="flex gap-4 p-4">
-                    <ActionButton onClick={() => {register()}}>Register</ActionButton>
-                </div>
-            </div>
-        </>
-    )
+  return (
+    <div className="w-full max-w-md bg-slate-200 border border-slate-800 p-8 rounded-2xl shadow-2xl">
+      <form className="flex flex-col gap-4">
+        <label className="flex flex-col gap-1">
+          <span className="text-sm font-medium">Username</span>
+          <input
+            className="border rounded px-3 py-2"
+            type="text"
+            placeholder="username..."
+          />
+        </label>
+
+        <label className="flex flex-col gap-1">
+          <span className="text-sm font-medium">Password</span>
+          <input
+            className="border rounded px-3 py-2"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+
+        <label className="flex flex-col gap-1">
+          <span className="text-sm font-medium">Repeat Password</span>
+          <input
+            className="border rounded px-3 py-2"
+            type="password"
+            value={confirmedPassword}
+            onChange={(e) => setConfirmedPassword(e.target.value)}
+          />
+        </label>
+
+        {passwordError && (
+          <p className="text-red-600 text-sm">{passwordError}</p>
+        )}
+
+        <ActionButton onClick={register}>Register</ActionButton>
+      </form>
+    </div>
+  );
 }
 
-export default Register
+export default Register;
