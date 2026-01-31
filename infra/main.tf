@@ -2,9 +2,8 @@ provider "aws" {
   region = "eu-central-1"
 }
 
-# 1. The User Pool (The "Database")
 resource "aws_cognito_user_pool" "main" {
-  name = "myapp-user-pool"
+  name = "application-overview"
 
   # Use email as the primary login identifier
   username_attributes      = ["email"]
