@@ -7,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+dist/*
+
 node_modules
 dist
 dist-ssr
@@ -22,3 +24,22 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 1. Local terraform directory (contains providers/plugins)
+*/.terraform/*
+
+# 2. Terraform State files (These contain your secrets in plain text!)
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+
+# 3. Variable files (Where you might store real passwords/keys)
+*.tfvars
+*.tfvars.json
+
+# 4. Crash logs
+crash.log
+
+# 5. Local environment overrides
+.terraformrc
+terraform.rc
