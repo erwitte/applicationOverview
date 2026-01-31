@@ -1,4 +1,9 @@
-const ActionButton = ({ children, onClick }) => {
+interface ActionButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void; 
+}
+
+const ActionButton = ({ children, onClick }: ActionButtonProps) => {
     return (
         <button 
             type={ 'button'}
