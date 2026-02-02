@@ -29,17 +29,17 @@ dist-ssr
 */.terraform/*
 
 # 2. Terraform State files (These contain your secrets in plain text!)
-*.tfstate
-*.tfstate.backup
-*.tfstate.lock.info
+*/*.tfstate
+*/*.tfstate.backup
+*/*.tfstate.lock.info
 
 # 3. Variable files (Where you might store real passwords/keys)
-*.tfvars
-*.tfvars.json
+*/*.tfvars
+*/*.tfvars.json
 
 # 4. Crash logs
 crash.log
 
 # 5. Local environment overrides
-.terraformrc
-terraform.rc
+*/.terraformrc
+*/terraform.rc

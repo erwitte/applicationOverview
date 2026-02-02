@@ -1,17 +1,20 @@
 import { useState } from "react";
 import ActionButton from "./components/ActionButton";
+import { registerUser } from "./services/signUp";
 
 function Register() {
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [email, setEmail] = useState("");
 
-  const register = () => {
+  const register = async () => {
     if (password !== confirmedPassword) {
       setPasswordError("Passwords don't match");
       return;
     }
-
+    await registerUser({email,password});
+    console.log(register);
     setPasswordError("");
   };
 
@@ -24,6 +27,7 @@ function Register() {
             className="border rounded px-3 py-2"
             type="text"
             placeholder="username..."
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
 
