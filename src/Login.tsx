@@ -9,16 +9,10 @@ function Login(){
 
     const navigate = useNavigate();
     const handleLogIn = async () => {
-        try{
             await signIn({
             username: email,
             password: password,
             })
-            console.log("great success");
-        }
-        catch(e){
-            console.log("nope");
-        }
     }
 
     return (
