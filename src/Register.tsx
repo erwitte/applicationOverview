@@ -1,8 +1,10 @@
 import { useState } from "react";
 import ActionButton from "./components/ActionButton";
 import { registerUser } from "./services/signUp";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -13,8 +15,9 @@ function Register() {
       setPasswordError("Passwords don't match");
       return;
     }
+    navigate("/verification");
     await registerUser({email,password});
-    console.log(register);
+    
     setPasswordError("");
   };
 
