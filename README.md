@@ -1,5 +1,7 @@
 # React + TypeScript + Vite
 
+push to s3: aws s3 sync ./dist s3://application-overview --delete
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
