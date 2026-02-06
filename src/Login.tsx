@@ -9,10 +9,19 @@ function Login(){
 
     const navigate = useNavigate();
     const handleLogIn = async () => {
-            await signIn({
-            username: email,
-            password: password,
-            })
+            try {
+                await signIn({
+                username: email,
+                password: password,
+            });
+
+            // ✅ login successful
+
+        } catch (error) {
+        // ❌ login failed
+        console.error("Login failed:", error);
+        alert("Invalid email or password");
+        }
     }
 
     return (
