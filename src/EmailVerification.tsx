@@ -1,8 +1,10 @@
 import ActionButton from "./components/ActionButton";
 import { confirmSignUp } from 'aws-amplify/auth';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function EmailVerification(){
+    const navigate = useNavigate();
     const [code, setCode] = useState("");
     const email = localStorage.getItem("verify_email");
     
@@ -10,13 +12,18 @@ function EmailVerification(){
       if (!email){
       return;
     }
-    const { nextStep } = await confirmSignUp({
+    try{
+    await confirmSignUp({
     username: email,
     confirmationCode: code,
-  });
+    })
+      navigate("/index");
+    }catch(e){
+      navigate("/");
+      console.log("falsch")
+    }
+  };
 
-  return nextStep;
-}
 
     return (
     <div className="w-full max-w-md bg-slate-200 border border-slate-800 p-8 rounded-2xl shadow-2xl">
