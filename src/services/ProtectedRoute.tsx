@@ -16,7 +16,7 @@ const ProtectedRoute = () => {
 
   // If no user, redirect to login but save the current location 
   // so we can send them back after they log in.
-  return user ? <Outlet /> : <Navigate to="/index" state={{ from: location }} replace />;
+  return user ? <Outlet /> : <Navigate to="/" state={{ from: location }} replace />;
 };
 
 export default ProtectedRoute;
