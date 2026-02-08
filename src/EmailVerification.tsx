@@ -36,7 +36,10 @@ function EmailVerification(){
             type="text"
             onChange={(e) => setCode(e.target.value)}
           />
-          <ActionButton onClick={ confirmUserSignUp }>Verify</ActionButton>
+          <div className="flex w-full mt-4  justify-around">
+            <ActionButton onClick={() => {navigate("/")}}>Cancel</ActionButton>
+            <ActionButton onClick={ confirmUserSignUp }>Verify</ActionButton>
+          </div>
         </label>
       </form>
     </div>
