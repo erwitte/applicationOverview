@@ -22,7 +22,7 @@ function App() {
                           <Route path="/register" element={<Register />} />
                           <Route path="/verification"element={<EmailVerification />} />
                           <Route element={<ProtectedRoute />}>
-                          <Route path="/index" element={<Index />} />
+                            <Route path="/index" element={<Index />} />
                           </Route>
 
                         </Routes>

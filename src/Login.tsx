@@ -14,8 +14,7 @@ function Login(){
                 username: email,
                 password: password,
             });
-
-            // ✅ login successful
+            navigate("/");
 
         } catch (error) {
         // ❌ login failed

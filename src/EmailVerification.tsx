@@ -1,5 +1,5 @@
 import ActionButton from "./components/ActionButton";
-import { confirmSignUp } from 'aws-amplify/auth';
+import { confirmSignUp, signOut } from 'aws-amplify/auth';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,14 +13,16 @@ function EmailVerification(){
       return;
     }
     try{
-    await confirmSignUp({
-    username: email,
-    confirmationCode: code,
-    })
-      navigate("/index");
+      await confirmSignUp({
+      username: email,
+      confirmationCode: code,
+      })
+      await signOut();
     }catch(e){
-      navigate("/");
+      console.log(e);
       console.log("falsch")
+    } finally{
+      navigate("/");
     }
   };
 
