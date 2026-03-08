@@ -14,10 +14,10 @@ function Login(){
                 username: email,
                 password: password,
             });
-            navigate("/");
+
+            navigate("/index");
 
         } catch (error) {
-        // ❌ login failed
         console.error("Login failed:", error);
         alert("Invalid email or password");
         }
