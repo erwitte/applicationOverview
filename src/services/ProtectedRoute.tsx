@@ -7,8 +7,12 @@ const ProtectedRoute = () => {
   if (loading){
     return <div>Loading...</div>; 
   }
-
-  return user ? <Outlet /> : <Navigate to="/" />;
+  if (user)
+{
+  return <Outlet />;
+}  
+console.log("hier");
+return<Navigate to="/" />;
 };
 
 export default ProtectedRoute;

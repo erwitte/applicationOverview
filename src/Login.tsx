@@ -9,17 +9,17 @@ function Login(){
 
     const navigate = useNavigate();
     const handleLogIn = async () => {
-            try {
-                await signIn({
+        console.log("nein");
+        try {
+            await signIn({
                 username: email,
                 password: password,
             });
 
-            navigate("/index");
-
+            setTimeout(() => navigate("/index"), 100);
+            console.log("ja");
         } catch (error) {
         console.error("Login failed:", error);
-        alert("Invalid email or password");
         }
     }
 

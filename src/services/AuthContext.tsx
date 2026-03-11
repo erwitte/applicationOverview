@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, [useAuth]);
 
   const checkUser = async () =>  {
+    setLoading(true);
     try {
       const currentUser = await getCurrentUser();
       setUser(currentUser);
