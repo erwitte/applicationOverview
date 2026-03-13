@@ -4,9 +4,10 @@ import { getCurrentUser } from 'aws-amplify/auth';
 interface AuthContextType {
   user: any | null;
   loading: boolean;
+  checkUser: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType>({ user: null, loading: true });
+const AuthContext = createContext<AuthContextType>({ user: null, loading: true, checkUser: async () => {} });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<any | null>(null);
@@ -29,7 +30,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, loading, checkUser }}>
       {children}
     </AuthContext.Provider>
   );

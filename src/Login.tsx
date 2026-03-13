@@ -1,23 +1,34 @@
 import ActionButton from "./components/ActionButton";
 import { useNavigate } from 'react-router-dom';
 import { signIn } from 'aws-amplify/auth';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "./services/AuthContext";
 
 function Login(){
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const { checkUser, user } = useAuth();
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) {
+            navigate("/index");
+        }
+    }, [user, navigate]);
+
     const handleLogIn = async () => {
-        console.log("nein");
         try {
-            await signIn({
+            const { isSignedIn, nextStep } = await signIn({
                 username: email,
                 password: password,
             });
 
-            setTimeout(() => navigate("/index"), 100);
-            console.log("ja");
+            if (isSignedIn) {
+                await checkUser();
+            } else {
+                console.log("Login not complete. Next step:", nextStep);
+            }
         } catch (error) {
         console.error("Login failed:", error);
         }
